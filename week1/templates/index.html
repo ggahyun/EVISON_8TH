@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8"> <!--문서의 문자 인코딩을 UTF-8로 설정하면 한글 깨지는 거 방지-->
+        <title>검색 및 방명록 페이지</title>
+    </head>
+    <body>
+        <h1>검색 페이지</h1>
+        <form action="/search" method="GET"> <!--GET 요청 시 /search 경로로 데이터 전송됨-->
+            <input type="text" name="q" placeholder="검색어 입력"> <!--검색어 입력란, name -="q"로 서버에서 받음-->
+            <button type="submit">검색</button>
+        </form>
+
+        <h2>방명록 작성</h2>
+        <form action="/write" method="POST">
+            이름: <input type="text" name="name" placeholder="이름 입력">
+            <br> <!--줄 바꿈-->
+            메시지: <input type="text" name="message" placeholder="메시지 입력">
+            <button type="sumit">작성</button> <!--클릭하면 POST 요청 발생-->
+        </form>
+
+        <h2>모든 방명록</h2>
+        <ul>
+            {% for entry in guestbook %} <!--for entry in questbook 반복문 의미함-->
+                <li> <!--<li> 안의 항목들이 불릿 표시됨-->
+                    <strong>{{ entry.name|safe}}</strong>: {{entry.message|safe}} <!--{{변수|safe}}를 쓰면 Flask에서 전달한 값이 HTML로 들어가고 escape 안 함-->
+                </li>
+            {% endfor %} <!--반복문의 종료 표시-->
+        </ul>
+    </body>
+</htm/>
