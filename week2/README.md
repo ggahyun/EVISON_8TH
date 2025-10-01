@@ -1,4 +1,5 @@
 <Login_project에 있는 SQL Injection이 발생하는 부분을 어떻게 패치했는가?>
+
 (1) $sql = "SELECT * FROM users WHERE username = '$username' AND password='$password'";
 
 취약점 설명: 입력받은 username과 password가 일치하는 사용자를 찾는 부분은 사용자 입력을 그대로 SQL에 붙여서 실행하므로 SQL Injection 취약점이 있는 부분이다. 
